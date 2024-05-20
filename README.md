@@ -13,3 +13,10 @@ Currently, two official plugins are available:
 Account and Auth API Docs : https://appwrite.io/docs/references/cloud/client-web/account
 Database API Docs : https://appwrite.io/docs/references/cloud/client-web/databases
 Storage API Docs : https://appwrite.io/docs/references/cloud/client-web/storage
+
+# React : 
+
+Forward Ref : 
+https://blog.logrocket.com/use-forwardref-react
+https://legacy.reactjs.org/docs/forwarding-refs.html
+https://react.dev/reference/react/forwardRef
