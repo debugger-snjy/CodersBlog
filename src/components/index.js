@@ -8,6 +8,8 @@ import Footer from "./Footer/Footer";
 import Button from "./UIComponents/Button";
 import Input from "./UIComponents/Input";
 import Logo from "./UIComponents/Logo";
+import Select from "./UIComponents/Select";
+import ArticleCard from "./UIComponents/ArticleCard";
 
 // Exporting the components
 export {
@@ -18,4 +20,6 @@ export {
     Button,
     Input,
     Logo,
+    Select,
+    ArticleCard
 }
