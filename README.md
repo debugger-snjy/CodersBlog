@@ -20,3 +20,8 @@ Forward Ref :
 https://blog.logrocket.com/use-forwardref-react
 https://legacy.reactjs.org/docs/forwarding-refs.html
 https://react.dev/reference/react/forwardRef
+
+# React Hook Form
+
+Different Validation Methods :
+https://react-hook-form.com/get-started#Applyvalidation
