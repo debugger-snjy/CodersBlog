@@ -6,3 +6,10 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+# AppWrite : 
+
+Account and Auth API Docs : https://appwrite.io/docs/references/cloud/client-web/account
+Database API Docs : https://appwrite.io/docs/references/cloud/client-web/databases
+Storage API Docs : https://appwrite.io/docs/references/cloud/client-web/storage
