@@ -9,8 +9,8 @@ import authServiceObject from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import { Outlet } from 'react-router-dom';
 
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
+// Getting the Components from the index.js
+import { Header, Footer } from "./components/index"
 
 function App() {
 
