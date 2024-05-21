@@ -12,7 +12,7 @@ import authServiceObject from "../../appwrite/auth"
 // To update the state in the store
 import store from "../../store/store"
 import { useDispatch } from 'react-redux'
-import Input from '../UIComponents/Input'
+import { Input } from '../index'
 
 function SignUp() {
 
