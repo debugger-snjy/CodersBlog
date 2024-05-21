@@ -12,17 +12,16 @@ function Protected({ children, authentication = true }) {
     useEffect(() => {
 
         // TODO: Check for more simpler version
-        if (authentication) {
-            if (authStatus === true) {
-                navigate("/")
-            }
-            else {
-                navigate("/login")
-            }
-        }
-        else {
+        // Update the If Condition
+        if (authentication && authStatus !== authentication) {
             navigate("/login")
+        } else if (!authentication && authStatus !== authentication) {
+            navigate("/")
         }
+
+        console.log("Data : \nauthStatus : " + authStatus + "\nauthentication : " + authentication);
+        console.log("Check 1 : ", (authentication && authStatus !== authentication));
+        console.log("Check 2 : ", (!authentication && authStatus !== authentication));
 
         setLoader(false)
     }, [authStatus, navigate, authentication])
@@ -31,3 +30,16 @@ function Protected({ children, authentication = true }) {
 }
 
 export default Protected
+
+// Login:
+// authentication = false
+// authStatus = false
+
+// authentication && authStatus !== authentication =====> false && (false !== false) ===> false && false ===> false
+
+// -----------------------------------------------------------------------------------------------------------------------
+// AllPosts:
+// authentication = true
+// authStatus = true
+
+// authentication && authStatus !== authentication =====> true && (true !== true) ===> true && true ===> true
