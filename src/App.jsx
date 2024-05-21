@@ -44,19 +44,20 @@ function App() {
 
     return (
         <>
-            <h1>Coders blog app with appwrite</h1>
+            {/* Removing the Heading as not needed here !! */}
+            {/* <h1>Coders blog app with appwrite</h1> */}
             {
-                !loading ?
+                loading ?
+                    // TODO : Add the Loading Spinner Here
                     <div>Loading . . . </div>
                     :
                     <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
                         <div className="w-full block">
                             <Header />
 
-                            {/* TODO :  We have to add the Router Provider and then we can use it  */}
+                            {/* Added the Outlet */}
                             <main>
-                                {/* <Outlet />*/}
-                                This is Demo
+                                <Outlet />
                             </main>
 
                             <Footer />
