@@ -10,9 +10,8 @@ import { login } from "../../store/authSlice"
 import authServiceObject from "../../appwrite/auth"
 
 // To update the state in the store
-import store from "../../store/store"
 import { useDispatch } from 'react-redux'
-import { Input } from '../index'
+import { Button, Input, Logo } from '../index'
 
 function SignUp() {
 
