@@ -7,6 +7,7 @@ function Header() {
 
     // This will give whether the user is logged in or not
     const authStatus = useSelector((state) => state.auth.status)
+    // console.log(authStatus);
 
     // Used to Navigate through different Pages
     const navigate = useNavigate()
@@ -51,9 +52,11 @@ function Header() {
                     </div>
                     {/* Here we are going to loop over all the navigation items and check if they are active or not, if active then only render them */}
                     <ul className="flex ml-auto">
+                        {/* {console.log(navItems)} */}
                         {
                             navItems.map((item) => {
-                                item.active ? (
+                                // console.log(item.active);
+                                return item.active ? (
                                     <li key={item.name}>
                                         <button className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' onClick={() => navigate(item.slug)}>
                                             {item.name}
