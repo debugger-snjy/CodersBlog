@@ -51,23 +51,23 @@ function App() {
                     // TODO : Add the Loading Spinner Here
                     // <div>Loading . . . </div>
                     // Adding the Spinner HTML Code
-                    <div class="spinner center">
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
-                        <div class="spinner-blade"></div>
+                    <div className="spinner center">
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
+                        <div className="spinner-blade"></div>
                     </div>
                     :
-                    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-                        <div className="w-full block">
+                    <div className="flex flex-wrap flex-col content-between">
+                        <div className="w-full block h-screen">
                             <Header />
 
                             {/* Added the Outlet */}
