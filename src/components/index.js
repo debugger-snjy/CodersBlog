@@ -15,6 +15,7 @@ import ArticleForm from "./ArticleForm/ArticleForm"
 import AuthLayout from "./AuthLayout/AuthLayout"
 import Login from "./Login/Login"
 import SignUp from "./Signup/SignUp"
+import FieldErrorAlert from "./UIComponents/FieldErrorAlert"
 
 
 // Exporting the components
@@ -32,5 +33,6 @@ export {
     ArticleForm,
     AuthLayout,
     Login,
-    SignUp
+    SignUp,
+    FieldErrorAlert
 }
