@@ -13,7 +13,7 @@ function ArticleForm({ articleData }) {
     const navigate = useNavigate();
 
     // Here we also need the userData to add the Article
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector(state => state.auth.userData)
 
     // Getting the Objects from the useForm
     // Here, watch is used to continuously watch at a field and on anything it will update !
@@ -73,7 +73,7 @@ function ArticleForm({ articleData }) {
 
             if (dbUpdatedArticle) {
                 // Our Article is Updated
-                navigate(`/post/${dbUpdatedArticle.$id}`)
+                navigate(`/article/${dbUpdatedArticle.$id}`)
             }
 
         }
@@ -96,7 +96,7 @@ function ArticleForm({ articleData }) {
 
                 if (createdArticle) {
                     // If the Article is created, then we will navigate the user to that article
-                    navigate(`/post/${createdArticle.$id}`)
+                    navigate(`/article/${createdArticle.$id}`)
                 }
             }
 
@@ -124,7 +124,7 @@ function ArticleForm({ articleData }) {
 
     return (
         <form onSubmit={handleSubmit(submitArticlePost)} className="flex flex-wrap">
-            
+
             {/* Left Side of the Form */}
             <div className="w-2/3 px-2">
                 <Input
@@ -152,13 +152,13 @@ function ArticleForm({ articleData }) {
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
+                    {...register("image", { required: !articleData })}
                 />
-                {post && (
+                {articleData && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
+                            src={appwriteService.getFilePreview(articleData.featuredImage)}
+                            alt={articleData.title}
                             className="rounded-lg"
                         />
                     </div>
@@ -169,8 +169,8 @@ function ArticleForm({ articleData }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update Article" : "Submit Article"}
+                <Button type="submit" bgColor={articleData ? "bg-green-500" : undefined} className="w-full">
+                    {articleData ? "Update Article" : "Submit Article"}
                 </Button>
             </div>
         </form>
