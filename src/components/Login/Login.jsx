@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link, matchPath, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { login as authLogin } from "../../store/authSlice"
-import { Button, Input, Logo } from "../index"
+import { Button, Input, Logo, FieldErrorAlert } from "../index"
 import { useDispatch } from 'react-redux'
 import authServiceObject from '../../appwrite/auth'
 
@@ -12,7 +12,8 @@ function Login() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { register, handleSubmit } = useForm()
+    // Get the formState Errors for the field Errors Data
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const [error, setError] = useState("");
 
     // NOTE : Create the Form Function anything other than handleSubmit as we get this from the React Hook Form
@@ -23,11 +24,13 @@ function Login() {
             // We are here calling the Login Function from the appwrite and that function will return the session
             const session = await authServiceObject.login(data)
             if (session) {
+                console.log("Login :: session :: ", session);
 
                 // This is a Function that will return the data of the current user
                 const userData = await authServiceObject.getCurrentUser()
 
                 if (userData) {
+                    console.log("Login :: userData :: ", userData);
                     // we have got the userdata, then we update the data in the state variable of the store
                     // we are using the login function of the store bu we have here renamed as authLogin
                     dispatch(authLogin(userData))
@@ -76,6 +79,9 @@ function Login() {
                             placeholder="Enter your email"
                             type="email"
 
+                            // Added the class to make the input field red in color
+                            className={errors.email ? 'border-[2px] border-red-500' : ""}
+
                             // Here, we have to spread the register function everytime, other wise the values gets override
                             // register will have 2 parameter: name (it should be unique and will be used to fetch the data)
                             // 2nd one is the options, there are many validation options (refer docs : https://react-hook-form.com/get-started#Applyvalidation)
@@ -85,20 +91,30 @@ function Login() {
                                     required: true,
 
                                     // Field to match the Email Address Expression
-                                    pattern: '/^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm',
-                                    validate: {
-                                        matchPatern: (value) => /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm.test(value)
-                                            || "Email Address must be Valid",
-                                    }
+                                    pattern: {
+                                        value: /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm,
+                                        message: "Invalid Email Address"
+                                    },
+                                    // validate: {
+                                    //     matchPattern: (value) => /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm.test(value)
+                                    //         || "Email Address must be Valid hete",
+                                    // }
                                 }
                             )}
                         />
+
+                        {/* To show the validation message for email */}
+                        {errors.email && errors.email.message && <FieldErrorAlert errorMsg={errors.email.message} />}
 
                         {/* Password Field */}
                         <Input
                             label="Password: "
                             placeholder="Enter your password"
                             type="password"
+
+                            // Added the class to make the input field red in color
+                            className={errors.password ? 'border-[2px] border-red-500' : ""}
+
                             {...register(
                                 "password",
                                 {
@@ -106,6 +122,7 @@ function Login() {
                                 }
                             )}
                         />
+
 
                         {/* Sign In Button */}
                         <Button type='submit' className='w-full'> Sign In </Button>
