@@ -26,7 +26,23 @@ function Protected({ children, authentication = true }) {
         setLoader(false)
     }, [authStatus, navigate, authentication])
 
-    return loader ? <h1>Loading...</h1> : <>{children}</>
+    return loader ?
+        // Adding the Spinner HTML Code
+        <div class="spinner center">
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+            <div class="spinner-blade"></div>
+        </div>
+        : <>{children}</>
 }
 
 export default Protected

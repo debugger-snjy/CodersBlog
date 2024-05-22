@@ -49,7 +49,22 @@ function App() {
             {
                 loading ?
                     // TODO : Add the Loading Spinner Here
-                    <div>Loading . . . </div>
+                    // <div>Loading . . . </div>
+                    // Adding the Spinner HTML Code
+                    <div class="spinner center">
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                    </div>
                     :
                     <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
                         <div className="w-full block">
