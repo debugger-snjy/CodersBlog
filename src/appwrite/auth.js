@@ -4,21 +4,21 @@
 // Refer Doc : 
 
 // Code from the AppWrite Docs : 
-    // import { Client, Account, ID } from "appwrite";
+// import { Client, Account, ID } from "appwrite";
 
-    // const client = new Client()
-    //     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    //     .setProject('<PROJECT_ID>');               // Your project ID
+// const client = new Client()
+//     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+//     .setProject('<PROJECT_ID>');               // Your project ID
 
-    // const account = new Account(client);
+// const account = new Account(client);
 
-    // const promise = account.create('[USER_ID]', 'email@example.com', '');
+// const promise = account.create('[USER_ID]', 'email@example.com', '');
 
-    // promise.then(function (response) {
-    //     console.log(response); // Success
-    // }, function (error) {
-    //     console.log(error); // Failure
-    // });
+// promise.then(function (response) {
+//     console.log(response); // Success
+// }, function (error) {
+//     console.log(error); // Failure
+// });
 
 // Importing the Appwrite Configurations
 import config from "../envconfig/envconfig"
@@ -55,6 +55,7 @@ export class AuthService {
                 // return userAccount
                 // Here, we are not returning the userAccount, we are directly login in to the system
                 // Call login function and login the user directly into the website
+                console.log("Sign in completed :", userAccount)
                 this.login(email, password)
             }
             else {
@@ -80,8 +81,15 @@ export class AuthService {
     // Method to check whether the user is logged in or not
     async getCurrentUser() {
         try {
-            // this Get the currently logged in user.
-            return await this.account.get();
+            console.log("Account : ", this.account)
+            // Got to know about this after logging this.account
+            if (this.account && (this.account.client.config.session || this.account.client.config.jwt)) {
+                // this Get the currently logged in user.
+                return await this.account.get();
+            }
+            else {
+                return false;
+            }
         } catch (error) {
             console.log("Error : ", error);
         }
