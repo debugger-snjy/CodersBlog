@@ -5,24 +5,55 @@ import serviceObj from '../appwrite/config'
 function AllArticles() {
 
     const [allArticles, setAllArticles] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    useEffect(() => { }, []);
+    // serviceObj.getAllArticles([]).then((articles) => {
+    //     if (articles) {
+    //         setAllArticles(articles.documents)
+    //     }
+    // })
 
-    serviceObj.getAllArticles([]).then((articles) => {
-        if (articles) {
-            setAllArticles(articles.documents)
-        }
-    })
+    useEffect(() => {
+        console.log("Fetching the Data From API");
+        serviceObj.getAllArticles([]).then((articles) => {
+            if (articles) {
+                setAllArticles(articles.documents)
+                console.log(allArticles);
+            }
+        })
+        setLoading(false)
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="spinner center">
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+                <div className="spinner-blade"></div>
+            </div>
+        )
+    }
 
     return (
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
                     {
-                        allArticles.map((article) => {
-                            <div key={article.$id} className='p-2 w-1/4'>
-                                <ArticleCard {...article} />
-                            </div>
+                        allArticles && allArticles.map((article) => {
+                            return (
+                                <div key={article.$id} className='p-2 w-1/3'>
+                                    <ArticleCard {...article} />
+                                </div>
+                            )
                         })
                     }
                 </div>
