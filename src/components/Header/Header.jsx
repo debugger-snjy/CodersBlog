@@ -22,7 +22,7 @@ function Header() {
         {
             name: 'Home',
             slug: "/",
-            active: authStatus,
+            active: !authStatus,
         },
         // {
         //     name: 'Login',
@@ -54,11 +54,12 @@ function Header() {
 
     return (
         <>
-            <div className="relative w-full bg-[#002233]">
+            {/* <div className="relative w-full bg-[#002233]"> */}
+            <div className="relative w-full bg-[#c8c8c8]">
                 <div className="mx-auto flex items-center justify-between p-4 sm:px-6 lg:px-8">
                     <Link className="inline-flex items-center space-x-2">
-                        <Logo size={30} color='white' />
-                        <span className="font-bold text-xl text-white">Coder's Blog</span>
+                        <Logo size={30} color='black' />
+                        <span className="font-bold text-xl text-black">Coder's Blog</span>
                     </Link>
                     <div className="hidden grow items-start lg:flex">
                         <ul className="ml-12 inline-flex space-x-8">
@@ -66,7 +67,7 @@ function Header() {
                                 navItems.map((item) => {
                                     return item.active ? (
                                         <li key={item.name}>
-                                            <button className='px-6 py-2 duration-200 hover:bg-blue-100 rounded-full inline-flex items-center text-base font-semibold text-white hover:text-gray-900' onClick={() => navigate(item.slug)}>
+                                            <button className='px-6 py-2 duration-200 rounded-full inline-flex items-center text-lg font-semibold text-black hover:font-bold' onClick={() => navigate(item.slug)}>
                                                 {item.name}
                                             </button>
                                         </li>
@@ -82,14 +83,14 @@ function Header() {
                             <button
                                 type="button"
                                 onClick={() => navigate("/signup")}
-                                className="rounded-md bg-transparent px-3 py-1 text-base font-semibold text-white hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                className="rounded-md bg-transparent px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
                                 Sign Up
                             </button>
                             <button
                                 type="button"
                                 onClick={() => navigate("/login")}
-                                className="rounded-md px-3 py-1 text-base font-semibold text-white hover:bg-black hover:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                className="rounded-md px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
                                 Log In
                             </button>
@@ -103,14 +104,14 @@ function Header() {
                                     authServiceObject.logout();
                                     dispatch(logout())
                                 }}
-                                className="rounded-md bg-transparent px-3 py-1 text-base font-semibold text-white hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                className="rounded-full bg-transparent px-3 py-1 text-lg font-semibold text-black hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
                                 Logout
                             </button>
                         </div>
                     }
                     <div className="lg:hidden">
-                        <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+                        <Menu color='white' onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
                     </div>
                     {isMenuOpen && (
                         <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
@@ -130,7 +131,7 @@ function Header() {
                                                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                             >
                                                 <span className="sr-only">Close menu</span>
-                                                <X className="h-6 w-6" aria-hidden="true" />
+                                                <X color='black' className="h-6 w-6" aria-hidden="true" />
                                             </button>
                                         </div>
                                     </div>
@@ -141,9 +142,9 @@ function Header() {
                                                     <button
                                                         key={item.name}
                                                         href={item.href}
-                                                        className="-m-3 flex items-center rounded-md p-3 text-base font-semibold hover:bg-gray-50"
+                                                        className="-m-3 flex items-center rounded-md p-3 text-lg font-semibold hover:bg-gray-50"
                                                     >
-                                                        <span className="ml-3 text-base font-medium text-gray-900">
+                                                        <span className="ml-3 text-lg font-medium text-gray-900">
                                                             {item.name}
                                                         </span>
                                                     </button> : null
@@ -153,14 +154,14 @@ function Header() {
                                     <div className="mt-2 space-y-2">
                                         <button
                                             type="button"
-                                            className="w-full rounded-md border border-black px-3 py-2 text-base font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                            className="w-full rounded-md border border-black px-3 py-2 text-lg font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                             onClick={() => navigate("/signup")}
                                         >
                                             Sign Up
                                         </button>
                                         <button
                                             type="button"
-                                            className="w-full rounded-md bg-black px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                            className="w-full rounded-md bg-black px-3 py-2 text-lg font-semibold text-black shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                             onClick={() => navigate("/login")}
                                         >
                                             Log In

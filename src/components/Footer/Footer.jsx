@@ -138,15 +138,16 @@ function Footer() {
         //     </div>
         // </section>
 
-        <div className='bg-[#0066ff] left-0 bottom-0 w-full' style={{ position: "absolute" }}>
-            <div className="mx-auto items-end justify-end py-4 px-4 md:flex bottom-0">
+        // <div className='bg-[#0066ff] left-0 bottom-0 w-full' style={{ position: "absolute" }}>
+        <div className='bg-[#0e1217] left-0 bottom-0 w-full' style={{ position: "absolute" }}>
+            <div className="mx-auto items-center justify-center py-4 px-4 md:flex bottom-0">
                 {/* <Link className="inline-flex items-center space-x-2">
                     <Logo size={30} />
                     <span className="font-bold">Coder's Blog</span>
                 </Link> */}
                 <div className="my-4 md:my-0">
                     <p className="text-sm font-medium text-white">
-                        © 2024 Coder's Blog. All rights reserved.
+                        © 2024 Coder's Blog <span className="mx-4">|</span> All rights reserved.
                     </p>
                 </div>
             </div>
