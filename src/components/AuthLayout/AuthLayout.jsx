@@ -14,8 +14,10 @@ function Protected({ children, authentication = true }) {
         // TODO: Check for more simpler version
         // Update the If Condition
         if (authentication && authStatus !== authentication) {
+            console.log("AuthLayout Navigated to /login");
             navigate("/login")
         } else if (!authentication && authStatus !== authentication) {
+            console.log("AuthLayout Navigated to /");
             navigate("/")
         }
 

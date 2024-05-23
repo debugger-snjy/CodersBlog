@@ -83,13 +83,13 @@ export class AuthService {
         try {
             console.log("Account : ", this.account)
             // Got to know about this after logging this.account
-            if (this.account && (this.account.client.config.session || this.account.client.config.jwt)) {
+            // if (this.account && (this.account.client.config.session || this.account.client.config.jwt)) {
                 // this Get the currently logged in user.
                 return await this.account.get();
-            }
-            else {
-                return false;
-            }
+            // }
+            // else {
+            //     return false;
+            // }
         } catch (error) {
             console.log("Error : ", error);
         }

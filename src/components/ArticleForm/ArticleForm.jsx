@@ -14,6 +14,7 @@ function ArticleForm({ articleData }) {
 
     // Here we also need the userData to add the Article
     const userData = useSelector(state => state.auth.userData)
+    console.log(userData);
 
     // Getting the Objects from the useForm
     // Here, watch is used to continuously watch at a field and on anything it will update !
@@ -22,7 +23,7 @@ function ArticleForm({ articleData }) {
             defaultValues: {
                 // title : '', // This will be invalid as if we are editing, then the title should be the value provided in the props
                 title: articleData?.title || "",
-                slug: articleData?.slug || "",
+                slug: articleData?.$id || "",
                 content: articleData?.content || "",
                 status: articleData?.status || "active",
             }
@@ -35,12 +36,16 @@ function ArticleForm({ articleData }) {
             // const slug = value.toLowerCase().replace(/ /g,"-")
             // return slug;
 
-            // Another way : 
-            return value
+            console.log(value);
+
+            const sluggedValue = value
                 .trim()
                 .toLowerCase()
-                .replace(/^[a-zA-Z\d\s]+/g, '-')
+                .replace(/[^a-zA-Z\d\s]+/g, '-')
                 .replace(/\s/g, '-')
+
+            // Returning the Slugged Value from title : 
+            return sluggedValue
         }
         return '';
     }, [])
@@ -59,7 +64,7 @@ function ArticleForm({ articleData }) {
 
             // If file is uploaded, then deleting the file
             if (uploadedFile) {
-                await serviceObj.deleteFile(articleData.featuredImage)
+                await serviceObj.deleteFile(articleData.featuredImageID)
             }
 
             // Updating the Data
@@ -68,7 +73,7 @@ function ArticleForm({ articleData }) {
                 ...data,
 
                 // overwriting the image, if new image is uploaded else returning the old image
-                featuredImage: uploadedFile ? uploadedFile.$id : articleData.featuredImage ? articleData.featuredImage : undefined
+                featuredImageID: uploadedFile ? uploadedFile.$id : articleData.featuredImageID ? articleData.featuredImageID : undefined
             })
 
             if (dbUpdatedArticle) {
@@ -86,12 +91,12 @@ function ArticleForm({ articleData }) {
             // If the image is uploaded successfully
             if (uploadedFile) {
                 const fileId = uploadedFile.$id;
-                data.featuredImage = fileId;
+                data.featuredImageID = fileId;
 
                 // Appwrite function to create the Article in the database
                 const createdArticle = await serviceObj.createArticle({
                     ...data,
-                    userId: userData.$id
+                    userID: userData.$id
                 })
 
                 if (createdArticle) {
@@ -131,12 +136,14 @@ function ArticleForm({ articleData }) {
                     label="Title :"
                     placeholder="Title"
                     className="mb-4"
+                    labelColor="white"
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
                     className="mb-4"
+                    labelColor="white"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
@@ -151,13 +158,14 @@ function ArticleForm({ articleData }) {
                     label="Featured Image :"
                     type="file"
                     className="mb-4"
+                    labelColor="white"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !articleData })}
                 />
                 {articleData && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(articleData.featuredImage)}
+                            src={serviceObj.getFilePreview(articleData.featuredImageID)}
                             alt={articleData.title}
                             className="rounded-lg"
                         />

@@ -22,7 +22,7 @@ export class Service {
     }
 
     // Method to Create the Article
-    async createArticle({ title, slug, content, featuredImage, status, userId }) {
+    async createArticle({ title, slug, content, featuredImageID, status, userID }) {
         try {
 
             // Syntax For createDocument : 
@@ -43,9 +43,9 @@ export class Service {
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredImageID,
                     status,
-                    userId,
+                    userID,
                 }
             )
         } catch (error) {
@@ -54,7 +54,7 @@ export class Service {
     }
 
     // Method to Update the Article
-    async updateArticle(slug, { title, content, featuredImage, status }) {
+    async updateArticle(slug, { title, content, featuredImageID, status }) {
         try {
 
             // Syntax For updateDocument : 
@@ -74,7 +74,7 @@ export class Service {
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredImageID,
                     status,
                 }
             )
@@ -144,12 +144,14 @@ export class Service {
             //     [] // queries (optional)
             // );
 
-            // We are listing all the documents
-            return await this.databases.listDocuments(
+            let allarticles = await this.databases.listDocuments(
                 envconfig.appWriteDatabaseId,
                 envconfig.appWriteArticleCollectionId,
                 queries
             )
+
+            // We are listing all the documents
+            return allarticles
         } catch (error) {
             console.log("Appwrite Service :: listArticle :: Error : ", error);
             return false;
@@ -202,10 +204,11 @@ export class Service {
     }
 
     // Method to Get the File Preview
-    getFilePreview(fileId){
+    getFilePreview(imageID) {
+        // console.log(imageID);
         return this.storage.getFilePreview(
             envconfig.appWriteBlogImgBucketId,
-            fileId,
+            imageID,
             // other attributes to set the preview
         )
     }

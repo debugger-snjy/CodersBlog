@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css'
 import { useState, useEffect } from 'react';
 
@@ -16,6 +16,7 @@ function App() {
 
     // Using the Loading effect untill the data is fetched
     const [loading, setLoading] = useState(true);
+    const authStatus = useSelector((state) => state.auth.status)
     const dispatch = useDispatch();
 
     // To Access the Environment Variables in the frontend, we can use them using process.env.<env_variable_name>
@@ -26,19 +27,28 @@ function App() {
 
     useEffect(() => {
 
-        // Getting the current User Data using the auth service
-        authServiceObject.getCurrentUser()
-            .then((userData) => {
-                if (userData) {
-                    dispatch(login({ userData }))
-                }
-                else {
-                    dispatch(logout())
-                }
-            })
-            .catch((error) => console.log("JSX :: App :: Error :: ", error))
-            // Using the finally to stop the loading
-            .finally(() => setLoading(false))
+        console.log("App.jsx", authStatus);
+
+        // if (authStatus) {
+            // Getting the current User Data using the auth service
+            authServiceObject.getCurrentUser()
+                .then((userData) => {
+                    if (userData) {
+                        console.log("App1.jsx", authStatus);
+                        dispatch(login({ userData }))
+                    }
+                    else {
+                        console.log("App2.jsx", authStatus);
+                        dispatch(logout())
+                    }
+                })
+                .catch((error) => console.log("JSX :: App :: Error :: ", error))
+                // Using the finally to stop the loading
+                .finally(() => setLoading(false))
+        // }
+        // else {
+        //     setLoading(false)
+        // }
 
     }, []);
 
@@ -67,11 +77,11 @@ function App() {
                     </div>
                     :
                     <div className="flex flex-wrap flex-col content-between">
-                        <div className="w-full block h-screen">
+                        <div className="w-full block">
                             <Header />
 
                             {/* Added the Outlet */}
-                            <main>
+                            <main className='min-h-screen'>
                                 <Outlet />
                             </main>
 

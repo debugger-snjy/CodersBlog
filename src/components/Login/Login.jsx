@@ -33,7 +33,7 @@ function Login() {
                     console.log("Login :: userData :: ", userData);
                     // we have got the userdata, then we update the data in the state variable of the store
                     // we are using the login function of the store bu we have here renamed as authLogin
-                    dispatch(authLogin(userData))
+                    dispatch(authLogin({ userData: userData }))
                     navigate("/")
                 }
             }
