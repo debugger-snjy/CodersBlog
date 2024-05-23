@@ -25,6 +25,7 @@ const Input = React.forwardRef(
         label,
         type = "text",
         className = "",
+        labelColor = "black",
         ...props
     }, ref) {
 
@@ -35,7 +36,7 @@ const Input = React.forwardRef(
                 {/* Adding the Label Message if label is Provided */}
                 {
                     label &&
-                    <label className='inline-block mb-1 pl-1' htmlFor={id}>
+                    <label className={`inline-block mb-1 pl-1 text-${labelColor} font-semibold`} htmlFor={id}>
                         {label}
                     </label>
                 }
