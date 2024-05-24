@@ -56,7 +56,7 @@ function Header() {
         <>
             {/* <div className="relative w-full bg-[#002233]"> */}
             <div className="relative w-full bg-[#c8c8c8]">
-                <div className="mx-auto flex items-center justify-between p-4 sm:px-6 lg:px-8">
+                <div className="mx-auto flex items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
                     <Link className="inline-flex items-center space-x-2">
                         <Logo size={30} color='black' />
                         <span className="font-bold text-xl text-black">Coder's Blog</span>
@@ -67,7 +67,7 @@ function Header() {
                                 navItems.map((item) => {
                                     return item.active ? (
                                         <li key={item.name}>
-                                            <button className='px-6 py-2 duration-200 rounded-full inline-flex items-center text-lg font-semibold text-black hover:font-bold' onClick={() => navigate(item.slug)}>
+                                            <button className='px-6 py-2 duration-200 rounded-full inline-flex items-center text-lg font-semibold text-black hover:text-red-600' onClick={() => navigate(item.slug)}>
                                                 {item.name}
                                             </button>
                                         </li>

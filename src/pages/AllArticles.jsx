@@ -49,11 +49,13 @@ function AllArticles() {
                 <div className='flex flex-wrap'>
                     {
                         allArticles && allArticles.map((article) => {
-                            return (
-                                <div key={article.$id} className='p-2 w-1/3'>
-                                    <ArticleCard {...article} />
-                                </div>
-                            )
+                            if (article.status === "active") {
+                                return (
+                                    <div key={article.$id} className='p-2 w-1/4'>
+                                        <ArticleCard articleData={article} showEDbtns={false} />
+                                    </div>
+                                )
+                            }
                         })
                     }
                 </div>

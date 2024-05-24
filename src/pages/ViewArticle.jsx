@@ -19,13 +19,6 @@ export default function ViewArticle() {
     // We get the slug from the paramater of the URL
     const { slug } = useParams();
 
-    // Getting the userdata from the store using the selector and state
-    const userData = useSelector((state) => state.auth.userData);
-
-    // Checking whether the user that has open the article is author of that article or not
-    // If he/she is the author, then he/she will be given the right to edit or delete this article
-    const isAuthor = article && userData ? article.userID === userData.$id : false;
-
     useEffect(() => {
         if (slug) {
 
@@ -36,16 +29,6 @@ export default function ViewArticle() {
         }
         else navigate("/");
     }, [slug, navigate]);
-
-    // Function to Delete the Article
-    const deleteArticle = () => {
-        serviceObj.deleteArticle(article.$id).then((status) => {
-            if (status) {
-                serviceObj.deleteFile(article.featuredImageID);
-                navigate("/");
-            }
-        });
-    };
 
     return article ? (
         <div className="py-8 lg:mx-[300px]">
@@ -72,18 +55,6 @@ export default function ViewArticle() {
                 </div>
             </div>
 
-            {/* TODO : Add More Data like likes, comments and favourites */}
-            {/* Moved the Edit and Delete Button to End of the Article */}
-            <div className="grid grid-cols-2 gap-4 mt-20">
-                <Link to={`/edit-article/${article.$id}`} className=" mr-2 inline">
-                    <Button bgColor="bg-green-500" className="w-full">
-                        Edit this Article
-                    </Button>
-                </Link>
-                <Button bgColor="bg-red-500" className="ml-2 inline" onClick={deleteArticle}>
-                    Delete this Article
-                </Button>
-            </div>
         </div>
     ) : null;
 }

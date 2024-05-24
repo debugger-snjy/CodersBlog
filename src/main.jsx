@@ -30,12 +30,17 @@ const router = createBrowserRouter(
             } />
             <Route path='/add-article' element={
                 <AuthLayout authentication={true}>
-                    <AddArticle />
+                    <AddArticle btnText="Add Article" />
                 </AuthLayout>
             } />
             <Route path='/edit-article/:slug' element={
                 <AuthLayout authentication={true}>
-                    <EditArticle />
+                    <EditArticle btnText="Edit Article" />
+                </AuthLayout>
+            } />
+            <Route path='/publish-article/:slug' element={
+                <AuthLayout authentication={true}>
+                    <EditArticle btnText="Publish Article"/>
                 </AuthLayout>
             } />
             <Route path='/article/:slug' element={

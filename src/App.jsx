@@ -30,21 +30,21 @@ function App() {
         console.log("App.jsx", authStatus);
 
         // if (authStatus) {
-            // Getting the current User Data using the auth service
-            authServiceObject.getCurrentUser()
-                .then((userData) => {
-                    if (userData) {
-                        console.log("App1.jsx", authStatus);
-                        dispatch(login({ userData }))
-                    }
-                    else {
-                        console.log("App2.jsx", authStatus);
-                        dispatch(logout())
-                    }
-                })
-                .catch((error) => console.log("JSX :: App :: Error :: ", error))
-                // Using the finally to stop the loading
-                .finally(() => setLoading(false))
+        // Getting the current User Data using the auth service
+        authServiceObject.getCurrentUser()
+            .then((userData) => {
+                if (userData) {
+                    console.log("App1.jsx", authStatus);
+                    dispatch(login({ userData }))
+                }
+                else {
+                    console.log("App2.jsx", authStatus);
+                    dispatch(logout())
+                }
+            })
+            .catch((error) => console.log("JSX :: App :: Error :: ", error))
+            // Using the finally to stop the loading
+            .finally(() => setLoading(false))
         // }
         // else {
         //     setLoading(false)
@@ -56,39 +56,39 @@ function App() {
         <>
             {/* Removing the Heading as not needed here !! */}
             {/* <h1>Coders blog app with appwrite</h1> */}
-            {
-                loading ?
-                    // TODO : Add the Loading Spinner Here
-                    // <div>Loading . . . </div>
-                    // Adding the Spinner HTML Code
-                    <div className="spinner center">
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                        <div className="spinner-blade"></div>
-                    </div>
-                    :
-                    <div className="flex flex-wrap flex-col content-between">
-                        <div className="w-full block">
-                            <Header />
+            <div className="flex flex-wrap flex-col content-between">
+                <div className="w-full block">
+                    <Header />
 
-                            {/* Added the Outlet */}
-                            <main className='min-h-screen'>
+                    {/* Added the Outlet */}
+                    <main className='min-h-screen'>
+                        {
+                            loading ?
+                                // TODO : Add the Loading Spinner Here
+                                // <div>Loading . . . </div>
+                                // Adding the Spinner HTML Code
+                                <div className="spinner center">
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                    <div className="spinner-blade"></div>
+                                </div>
+                                :
                                 <Outlet />
-                            </main>
+                        }
+                    </main>
 
-                            <Footer />
-                        </div>
-                    </div>
-            }
+                    <Footer />
+                </div>
+            </div>
         </>
     )
 }

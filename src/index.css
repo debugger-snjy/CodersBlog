@@ -4,7 +4,7 @@
 
 /* Spinner CSS */
 .spinner {
-    font-size: 100px;
+    font-size: 30px;
     position: relative;
     display: inline-block;
     width: 1em;
@@ -15,7 +15,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 20vh;
+    top: 0;
     bottom: 0;
     margin: auto;
 }
@@ -175,6 +175,67 @@ body {
     background-size: cover;
     background-position: center center;
     background-color: black;
-    box-shadow: inset 2px 2px 2px 2px black;
+    /* box-shadow: inset 2px 2px 2px 2px black; */
     backdrop-filter: blur(5px);
+}
+
+/* Ribbion for Unactive Articles */
+/* HTML: <div class="ribbon">Your text content</div> */
+.ribbon {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.ribbon {
+    --f: .5em;
+    /* control the folded part*/
+    --r: .8em;
+    /* control the ribbon shape */
+
+    position: absolute;
+    display: inline;
+    top: 5px;
+    right: calc(-1*var(--f));
+    padding-inline: .25em;
+    line-height: 1.8;
+    background: #ffffff;
+    border-bottom: var(--f) solid #0005;
+    border-left: var(--r) solid #0000;
+    clip-path:
+        polygon(var(--r) 0, 100% 0, 100% calc(100% - var(--f)), calc(100% - var(--f)) 100%,
+            calc(100% - var(--f)) calc(100% - var(--f)), var(--r) calc(100% - var(--f)),
+            0 calc(50% - var(--f)/2));
+}
+
+.likeIcon:hover {
+    background-color: #1ddc6f3d !important;
+
+    svg {
+        stroke: #39e58c !important;
+    }
+}
+
+.commentIcon:hover {
+    background-color: #0dcfdc3d !important;
+
+    svg {
+        stroke: #2cdce6 !important;
+    }
+}
+
+.bookmarkIcon:hover {
+    background-color: #ff7a2b3d !important;
+
+    svg {
+        stroke: #ff8e3b !important;
+    }
+}
+
+.linkIcon:hover {
+    background-color: #c029f03d !important;
+
+    svg {
+        stroke: #ce3df3 !important;
+    }
 }

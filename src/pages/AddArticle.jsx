@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, ArticleForm } from "../components/index"
 
-function AddArticle() {
+function AddArticle({ btnText }) {
     return (
         <div className='py-8'>
             <Container>
-                <ArticleForm />
+                <ArticleForm btnText={btnText} />
             </Container>
         </div>
     )

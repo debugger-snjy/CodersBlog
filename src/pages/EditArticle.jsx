@@ -3,7 +3,7 @@ import { Container, ArticleForm } from "../components/index"
 import serviceObj from '../appwrite/config'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function EditArticle() {
+function EditArticle({btnText}) {
 
     const [article, setArticle] = useState(null)
     const { slug } = useParams();
@@ -27,7 +27,7 @@ function EditArticle() {
     return article ? (
         <div className='py-8'>
             <Container>
-                <ArticleForm articleData={article} />
+                <ArticleForm articleData={article} btnText={btnText} />
             </Container>
         </div>
     ) : null;

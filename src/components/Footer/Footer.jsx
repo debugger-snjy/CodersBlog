@@ -139,7 +139,7 @@ function Footer() {
         // </section>
 
         // <div className='bg-[#0066ff] left-0 bottom-0 w-full' style={{ position: "absolute" }}>
-        <div className='bg-[#0e1217] left-0 bottom-0 w-full' style={{ position: "absolute" }}>
+        <div className='bg-[#0e1217] left-0 bottom-0 w-full' style={{ position: "relative" }}>
             <div className="mx-auto items-center justify-center py-4 px-4 md:flex bottom-0">
                 {/* <Link className="inline-flex items-center space-x-2">
                     <Logo size={30} />

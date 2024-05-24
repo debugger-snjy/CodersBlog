@@ -14,6 +14,7 @@ function Home() {
 
     useEffect(() => {
         if (stateData.status) {
+            console.log("Home Page");
             serviceObj.getAllArticles([Query.equal("userID", stateData.userData.$id)]).then((articles) => {
                 if (articles) {
                     setAllArticles(articles.documents)
@@ -24,7 +25,7 @@ function Home() {
 
     // if (!authStatus && allArticles.length === 0) {
     return (
-        <div className="w-full py-8">
+        <div className="w-full pt-8">
             <Container>
                 <div className="flex flex-wrap">
                     <div className="p-2 w-full">
@@ -43,8 +44,8 @@ function Home() {
                     {
                         allArticles && allArticles.map((article) => {
                             return (
-                                <div key={article.$id} className='p-2 w-1/3'>
-                                    <ArticleCard {...article} />
+                                <div key={article.$id} className='p-2 w-1/4'>
+                                    <ArticleCard articleData={article} showEDbtns={true} />
                                 </div>
                             )
                         })

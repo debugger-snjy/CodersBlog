@@ -8,9 +8,11 @@ import { useSelector } from 'react-redux'
 import serviceObj from "../../appwrite/config"
 
 // We are making this Form Reusable for Creating Article as well as Editing Article (if editing, then it will provide the data so for that using the props data in this) 
-function ArticleForm({ articleData }) {
+function ArticleForm(props) {
 
     const navigate = useNavigate();
+
+    const articleData = props.articleData
 
     // Here we also need the userData to add the Article
     const userData = useSelector(state => state.auth.userData)
@@ -178,7 +180,8 @@ function ArticleForm({ articleData }) {
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={articleData ? "bg-green-500" : undefined} className="w-full">
-                    {articleData ? "Update Article" : "Submit Article"}
+                    {/* {articleData ? "Update Article" : "Submit Article"} */}
+                    {props.btnText}
                 </Button>
             </div>
         </form>
