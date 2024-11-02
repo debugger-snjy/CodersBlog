@@ -34,11 +34,11 @@ function Header() {
         //     slug: "/signup",
         //     active: !authStatus,
         // },
-        {
-            name: 'All Posts',
-            slug: "/all-articles",
-            active: authStatus,
-        },
+        // {
+        //     name: 'All Posts',
+        //     slug: "/all-articles",
+        //     active: authStatus,
+        // },
         {
             name: 'Add Posts',
             slug: "/add-article",
@@ -76,6 +76,13 @@ function Header() {
                                 })
                             }
 
+                            {/* Adding the All Posts Link */}
+                            <li key={'all-posts'}>
+                                <button className='px-6 py-2 duration-200 rounded-full inline-flex items-center text-lg font-semibold text-black hover:text-red-600' onClick={() => navigate("/all-articles")}>
+                                    All Posts
+                                </button>
+                            </li>
+
                         </ul>
                     </div>
                     {
@@ -83,14 +90,14 @@ function Header() {
                             <button
                                 type="button"
                                 onClick={() => navigate("/signup")}
-                                className="rounded-md bg-transparent px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                className="rounded-md bg-transparent px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
                                 Sign Up
                             </button>
                             <button
                                 type="button"
                                 onClick={() => navigate("/login")}
-                                className="rounded-md px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                className="rounded-md px-3 py-1 text-lg font-semibold text-black hover:bg-black hover:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
                                 Log In
                             </button>
@@ -102,7 +109,7 @@ function Header() {
                                 type="button"
                                 onClick={() => {
                                     authServiceObject.logout();
-                                    dispatch(logout())
+                                    dispatch(logout());
                                 }}
                                 className="rounded-full bg-transparent px-3 py-1 text-lg font-semibold text-black hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                             >
@@ -154,14 +161,14 @@ function Header() {
                                     <div className="mt-2 space-y-2">
                                         <button
                                             type="button"
-                                            className="w-full rounded-md border border-black px-3 py-2 text-lg font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                            className="w-full rounded-md border border-black px-3 py-2 text-lg font-semibold text-black hover:bg-black hover:text-white hover:border-2 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                             onClick={() => navigate("/signup")}
                                         >
                                             Sign Up
                                         </button>
                                         <button
                                             type="button"
-                                            className="w-full rounded-md bg-black px-3 py-2 text-lg font-semibold text-black shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                            className="w-full rounded-md border border-black px-3 py-2 text-lg font-semibold text-black shadow-sm hover:bg-black hover:text-white hover:border-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                             onClick={() => navigate("/login")}
                                         >
                                             Log In

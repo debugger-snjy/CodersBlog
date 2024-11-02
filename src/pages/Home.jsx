@@ -52,6 +52,15 @@ function Home() {
                     }
                 </div>
 
+                <div className='w-full flex flex-wrap'>
+                    {
+                        allArticles.length === 0 &&
+                        <div className='p-2 text-red-300 text-xl font-bold'>
+                            Kindly Login to Create/Add Your Blogs
+                        </div>
+                    }
+                </div>
+
             </Container>
         </div>
     )

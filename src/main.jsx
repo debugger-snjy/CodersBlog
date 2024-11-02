@@ -24,7 +24,7 @@ const router = createBrowserRouter(
                 </AuthLayout>
             } />
             <Route path='/all-articles' element={
-                <AuthLayout authentication={true}>
+                <AuthLayout authentication={false}>
                     <AllArticles />
                 </AuthLayout>
             } />
